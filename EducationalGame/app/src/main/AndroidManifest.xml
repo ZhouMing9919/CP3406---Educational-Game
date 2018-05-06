@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".HighScoresActivity"></activity>
+        <activity android:name=".HighScoresActivity" />
     </application>
 
 </manifest>
