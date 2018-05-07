@@ -21,6 +21,7 @@ public class GameActivity extends AppCompatActivity {
     Button leftButton;
     Button rightButton;
     TextView question;
+    TextView scoreText;
 
     Random random;
     int firstNumber;
@@ -28,6 +29,7 @@ public class GameActivity extends AppCompatActivity {
     int answer;
     String stringAnswer;
     int score;
+    String stringScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class GameActivity extends AppCompatActivity {
         leftButton = (Button) findViewById(R.id.leftButton);
         rightButton = (Button) findViewById(R.id.rightButton);
         question = (TextView) findViewById(R.id.question);
+        scoreText = (TextView) findViewById(R.id.score);
         generateQuestion();
         setButtons();
     }
@@ -73,8 +76,14 @@ public class GameActivity extends AppCompatActivity {
         if(leftButton.getText().equals(stringAnswer)) {
             System.out.println("NICE LEFT BUTTON CORRECT");
             score += 1;
+            stringScore = Integer.toString(score);
+            scoreText.setText(stringScore);
             generateQuestion();
             setButtons();
+        } else {
+            score = 0;
+            stringScore = Integer.toString(score);
+            scoreText.setText(stringScore);
         }
 
     }
@@ -83,8 +92,14 @@ public class GameActivity extends AppCompatActivity {
         if(rightButton.getText().equals(stringAnswer)) {
             System.out.println("NICE RIGHT BUTTON CORRECT");
             score += 1;
+            stringScore = Integer.toString(score);
+            scoreText.setText(stringScore);
             generateQuestion();
             setButtons();
+        } else {
+            score = 0;
+            stringScore = Integer.toString(score);
+            scoreText.setText(stringScore);
         }
     }
 
@@ -99,14 +114,15 @@ public class GameActivity extends AppCompatActivity {
     }
 
     void setButtons() {
-
-        int leftOrRight = random.nextInt(1);
+        int fakeAnswer = (answer - 10) - random.nextInt(answer + 10); //Need to find a better way to do this!!!!!!!!
+        String fakeAnswerString = Integer.toString(fakeAnswer);
+        int leftOrRight = random.nextInt(2);
         if (leftOrRight == 0) {
             leftButton.setText(stringAnswer);
-            rightButton.setText(stringAnswer);
+            rightButton.setText(fakeAnswerString + " TEST");
         } else {
             rightButton.setText(stringAnswer);
-            leftButton.setText(stringAnswer);
+            leftButton.setText(fakeAnswerString + " LOL");
         }
     }
 }
