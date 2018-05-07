@@ -12,11 +12,23 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
     Button leftButton;
     Button rightButton;
+    TextView question;
+
+    Random random;
+    int firstNumber;
+    int secondNumber;
+    int answer;
+    String stringAnswer;
+    int score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +37,12 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        leftButton = (Button) findViewById(R.id.leftButton);
+        rightButton = (Button) findViewById(R.id.rightButton);
+        question = (TextView) findViewById(R.id.question);
+        generateQuestion();
+        setButtons();
     }
 
     @Override
@@ -51,4 +69,44 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    void leftButtonPressed(View v) {
+        if(leftButton.getText().equals(stringAnswer)) {
+            System.out.println("NICE LEFT BUTTON CORRECT");
+            score += 1;
+            generateQuestion();
+            setButtons();
+        }
+
+    }
+
+    void rightButtonPressed(View v) {
+        if(rightButton.getText().equals(stringAnswer)) {
+            System.out.println("NICE RIGHT BUTTON CORRECT");
+            score += 1;
+            generateQuestion();
+            setButtons();
+        }
+    }
+
+    void generateQuestion() {
+        random = new Random();
+        firstNumber = random.nextInt(100);
+        secondNumber = random.nextInt(100);
+        answer = firstNumber + secondNumber;
+        stringAnswer = Integer.toString(answer);
+        String questionText = firstNumber + " + " + secondNumber + " =";
+        question.setText(questionText);
+    }
+
+    void setButtons() {
+
+        int leftOrRight = random.nextInt(1);
+        if (leftOrRight == 0) {
+            leftButton.setText(stringAnswer);
+            rightButton.setText(stringAnswer);
+        } else {
+            rightButton.setText(stringAnswer);
+            leftButton.setText(stringAnswer);
+        }
+    }
 }
