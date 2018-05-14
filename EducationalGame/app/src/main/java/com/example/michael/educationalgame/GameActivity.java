@@ -138,8 +138,8 @@ public class GameActivity extends AppCompatActivity {
 
     void generateSubtractionQuestion() {
         random = new Random();
-        firstNumber = random.nextInt(pref.getInt("firstValueMax", 0));
-        secondNumber = random.nextInt(pref.getInt("secondValueMax", 0));
+        firstNumber = random.nextInt(pref.getInt("firstValueMax", 100));
+        secondNumber = random.nextInt(pref.getInt("secondValueMax", 100));
         answer = firstNumber - secondNumber;
         stringAnswer = Integer.toString(answer);
         String questionText = firstNumber + " - " + secondNumber + " =";
@@ -160,10 +160,16 @@ public class GameActivity extends AppCompatActivity {
     }
 
     void gameOver() {
+        prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
+        prefEditor.putInt("score", score);
+        prefEditor.apply();
+        System.out.println(pref.getInt("score", 0));
         score = 0;
         stringScore = Integer.toString(score);
         scoreText.setText(stringScore);
         //animator.end(); //Causing app to crash for some reason
+        animator.pause();
+        animator.cancel();
         Intent intent = new Intent(this, GameOverActivity.class);
         startActivity(intent);
     }
