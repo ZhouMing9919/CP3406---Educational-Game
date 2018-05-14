@@ -152,10 +152,10 @@ public class GameActivity extends AppCompatActivity {
         int leftOrRight = random.nextInt(2);
         if (leftOrRight == 0) {
             leftButton.setText(stringAnswer);
-            rightButton.setText(fakeAnswerString + " TEST");
+            rightButton.setText(fakeAnswerString + ".");
         } else {
             rightButton.setText(stringAnswer);
-            leftButton.setText(fakeAnswerString + " LOL");
+            leftButton.setText(fakeAnswerString + ".");
         }
     }
 
@@ -164,6 +164,8 @@ public class GameActivity extends AppCompatActivity {
         stringScore = Integer.toString(score);
         scoreText.setText(stringScore);
         //animator.end(); //Causing app to crash for some reason
+        Intent intent = new Intent(this, GameOverActivity.class);
+        startActivity(intent);
     }
 
     void runTimer() {
