@@ -1,5 +1,8 @@
 package com.example.michael.educationalgame;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -23,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
     Button rightButton;
     TextView question;
     TextView scoreText;
+    ProgressBar timerBar;
 
     SharedPreferences.Editor prefEditor;
     SharedPreferences pref;
@@ -34,6 +39,7 @@ public class GameActivity extends AppCompatActivity {
     String stringAnswer;
     int score;
     String stringScore;
+    ValueAnimator animator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +58,19 @@ public class GameActivity extends AppCompatActivity {
         //prefEditor.putInt("secondValueMax", 100);
         //prefEditor.apply();
 
+
         leftButton = (Button) findViewById(R.id.leftButton);
         rightButton = (Button) findViewById(R.id.rightButton);
         question = (TextView) findViewById(R.id.question);
         scoreText = (TextView) findViewById(R.id.score);
+        timerBar = (ProgressBar) findViewById(R.id.timerBar);
+
+        animator = ValueAnimator.ofInt(0, timerBar.getMax());
+
+
         generateAdditionQuestion();
         setButtons();
+        runTimer();
     }
 
     @Override
@@ -92,6 +105,7 @@ public class GameActivity extends AppCompatActivity {
             scoreText.setText(stringScore);
             generateAdditionQuestion();
             setButtons();
+            runTimer();
         } else {
             score = 0;
             stringScore = Integer.toString(score);
@@ -108,6 +122,7 @@ public class GameActivity extends AppCompatActivity {
             scoreText.setText(stringScore);
             generateAdditionQuestion();
             setButtons();
+            runTimer();
         } else {
             score = 0;
             stringScore = Integer.toString(score);
@@ -146,5 +161,24 @@ public class GameActivity extends AppCompatActivity {
             rightButton.setText(stringAnswer);
             leftButton.setText(fakeAnswerString + " LOL");
         }
+    }
+
+    void runTimer() {
+        animator.setDuration(3000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                timerBar.setProgress((Integer)animation.getAnimatedValue());
+
+            }
+        });
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+
+            }
+        });
+        animator.start();
     }
 }
