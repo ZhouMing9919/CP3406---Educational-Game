@@ -107,9 +107,7 @@ public class GameActivity extends AppCompatActivity {
             setButtons();
             runTimer();
         } else {
-            score = 0;
-            stringScore = Integer.toString(score);
-            scoreText.setText(stringScore);
+            gameOver();
         }
 
     }
@@ -124,9 +122,7 @@ public class GameActivity extends AppCompatActivity {
             setButtons();
             runTimer();
         } else {
-            score = 0;
-            stringScore = Integer.toString(score);
-            scoreText.setText(stringScore);
+            gameOver();
         }
     }
 
@@ -163,6 +159,13 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    void gameOver() {
+        score = 0;
+        stringScore = Integer.toString(score);
+        scoreText.setText(stringScore);
+        //animator.end(); //Causing app to crash for some reason
+    }
+
     void runTimer() {
         animator.setDuration(3000);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -176,7 +179,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-
+                gameOver();
             }
         });
         animator.start();
