@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../EducationalGame.iml" filepath="$PROJECT_DIR$/../EducationalGame.iml" />
-      <module fileurl="file://D:\Libraries\My Documents\GitHub\CP3406---Educational-Game\EducationalGame\EducationalGame.iml" filepath="D:\Libraries\My Documents\GitHub\CP3406---Educational-Game\EducationalGame\EducationalGame.iml" />
       <module fileurl="file://C:\Users\jc428209\Desktop\CP3406---Educational-Game\EducationalGame\EducationalGame.iml" filepath="C:\Users\jc428209\Desktop\CP3406---Educational-Game\EducationalGame\EducationalGame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
-      <module fileurl="file://D:\Libraries\My Documents\GitHub\CP3406---Educational-Game\EducationalGame\app\app.iml" filepath="D:\Libraries\My Documents\GitHub\CP3406---Educational-Game\EducationalGame\app\app.iml" />
       <module fileurl="file://C:\Users\jc428209\Desktop\CP3406---Educational-Game\EducationalGame\app\app.iml" filepath="C:\Users\jc428209\Desktop\CP3406---Educational-Game\EducationalGame\app\app.iml" />
     </modules>
   </component>

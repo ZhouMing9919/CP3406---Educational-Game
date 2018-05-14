@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
-        ////prefEditor.putInt("firstValueMin", 0);
-        //prefEditor.putInt("firstValueMax", 100);
-        ////prefEditor.putInt("secondValueMin", 0);
-        //prefEditor.putInt("secondValueMax", 100);
-        //prefEditor.apply();
+        prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
+        //prefEditor.putInt("firstValueMin", 0);
+        prefEditor.putInt("firstValueMax", 100);
+        //prefEditor.putInt("secondValueMin", 0);
+        prefEditor.putInt("secondValueMax", 100);
+        prefEditor.apply();
     }
 
     @Override
