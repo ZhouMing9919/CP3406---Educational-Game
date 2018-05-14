@@ -1,6 +1,7 @@
 package com.example.michael.educationalgame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,6 +24,9 @@ public class GameActivity extends AppCompatActivity {
     TextView question;
     TextView scoreText;
 
+    SharedPreferences.Editor prefEditor;
+    SharedPreferences pref;
+
     Random random;
     int firstNumber;
     int secondNumber;
@@ -40,11 +44,19 @@ public class GameActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        pref = getSharedPreferences("preferences", MODE_PRIVATE);
+        //prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
+        ////prefEditor.putInt("firstValueMin", 0);
+        //prefEditor.putInt("firstValueMax", 100);
+        ////prefEditor.putInt("secondValueMin", 0);
+        //prefEditor.putInt("secondValueMax", 100);
+        //prefEditor.apply();
+
         leftButton = (Button) findViewById(R.id.leftButton);
         rightButton = (Button) findViewById(R.id.rightButton);
         question = (TextView) findViewById(R.id.question);
         scoreText = (TextView) findViewById(R.id.score);
-        generateQuestion();
+        generateAdditionQuestion();
         setButtons();
     }
 
@@ -78,7 +90,7 @@ public class GameActivity extends AppCompatActivity {
             score += 1;
             stringScore = Integer.toString(score);
             scoreText.setText(stringScore);
-            generateQuestion();
+            generateAdditionQuestion();
             setButtons();
         } else {
             score = 0;
@@ -94,7 +106,7 @@ public class GameActivity extends AppCompatActivity {
             score += 1;
             stringScore = Integer.toString(score);
             scoreText.setText(stringScore);
-            generateQuestion();
+            generateAdditionQuestion();
             setButtons();
         } else {
             score = 0;
@@ -103,13 +115,23 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    void generateQuestion() {
+    void generateAdditionQuestion() {
         random = new Random();
-        firstNumber = random.nextInt(100);
-        secondNumber = random.nextInt(100);
+        firstNumber = random.nextInt(pref.getInt("firstValueMax", 0));
+        secondNumber = random.nextInt(pref.getInt("secondValueMax", 0));
         answer = firstNumber + secondNumber;
         stringAnswer = Integer.toString(answer);
         String questionText = firstNumber + " + " + secondNumber + " =";
+        question.setText(questionText);
+    }
+
+    void generateSubtractionQuestion() {
+        random = new Random();
+        firstNumber = random.nextInt(pref.getInt("firstValueMax", 0));
+        secondNumber = random.nextInt(pref.getInt("secondValueMax", 0));
+        answer = firstNumber - secondNumber;
+        stringAnswer = Integer.toString(answer);
+        String questionText = firstNumber + " - " + secondNumber + " =";
         question.setText(questionText);
     }
 

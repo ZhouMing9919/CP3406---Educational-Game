@@ -1,6 +1,7 @@
 package com.example.michael.educationalgame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,8 @@ import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences.Editor prefEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
+        //prefEditor.putInt("firstValueMin", 0);
+        prefEditor.putInt("firstValueMax", 100);
+        //prefEditor.putInt("secondValueMin", 0);
+        prefEditor.putInt("secondValueMax", 100);
+        prefEditor.apply();
     }
 
     @Override
