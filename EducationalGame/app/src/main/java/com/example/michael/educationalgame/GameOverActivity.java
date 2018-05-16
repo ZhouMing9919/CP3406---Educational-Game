@@ -60,7 +60,7 @@ public class GameOverActivity extends AppCompatActivity {
         score.setText("Score: " + scoreAsText);
 
         long id = highScores.saveScore("Test", pref.getInt("score", 0));
-        
+
         //System.out.println(Long.toString(id));
         //HighScores score = highscores.getScore(1);
         //System.out.println(score.getName() + Integer.toString(score.getScore()));

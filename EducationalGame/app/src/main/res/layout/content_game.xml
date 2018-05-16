@@ -73,16 +73,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Left Button"
-            android:onClick="leftButtonPressed"/>
+            android:text="Left Button"/>
+            <!--android:onClick="leftButtonPressed"/>-->
 
         <Button
             android:id="@+id/rightButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Right Button"
-            android:onClick="rightButtonPressed"/>
+            android:text="Right Button"/>
+            <!--android:onClick="rightButtonPressed"-->
     </LinearLayout>
 
 

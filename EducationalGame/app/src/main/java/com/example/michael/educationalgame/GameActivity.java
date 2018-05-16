@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.SensorListener;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,10 +19,19 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+
 
 import java.util.Random;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity implements SensorEventListener {
+
+    private Sensor sensor;
+    private SensorManager sensorManager;
+
 
     Button leftButton;
     Button rightButton;
@@ -58,6 +68,10 @@ public class GameActivity extends AppCompatActivity {
         //prefEditor.putInt("secondValueMax", 100);
         //prefEditor.apply();
 
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        sensorManager.registerListener(this, sensor,SensorManager.SENSOR_DELAY_NORMAL);
 
         leftButton = (Button) findViewById(R.id.leftButton);
         rightButton = (Button) findViewById(R.id.rightButton);
@@ -67,10 +81,36 @@ public class GameActivity extends AppCompatActivity {
 
         animator = ValueAnimator.ofInt(0, timerBar.getMax());
 
+        leftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                leftButtonPressed();
+            }
+        });
 
+        rightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rightButtonPressed();
+            }
+        });
         generateAdditionQuestion();
         setButtons();
         runTimer();
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.values[0] > 4) {
+            leftButtonPressed();
+        } else if (event.values[0] < -4) {
+            rightButtonPressed();
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 
     @Override
@@ -97,7 +137,7 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void leftButtonPressed(View v) {
+    void leftButtonPressed() {
         if(leftButton.getText().equals(stringAnswer)) {
             System.out.println("NICE LEFT BUTTON CORRECT");
             score += 1;
@@ -112,7 +152,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    void rightButtonPressed(View v) {
+    void rightButtonPressed() {
         if(rightButton.getText().equals(stringAnswer)) {
             System.out.println("NICE RIGHT BUTTON CORRECT");
             score += 1;
@@ -193,4 +233,6 @@ public class GameActivity extends AppCompatActivity {
         });
         animator.start();
     }
+
+
 }
