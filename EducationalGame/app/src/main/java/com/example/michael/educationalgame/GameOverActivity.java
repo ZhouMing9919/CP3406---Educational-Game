@@ -10,7 +10,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
+
+import java.util.List;
 
 import database.DatabaseHelper;
 import database.HighScores;
@@ -24,6 +28,8 @@ public class GameOverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game_over);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,10 +43,13 @@ public class GameOverActivity extends AppCompatActivity {
         score.setText("Score: " + scoreAsText);
 
         DatabaseHelper highscores = new DatabaseHelper(this);
-        //long id = highscores.saveScore("Test", 9);
+        List<HighScores> allScores = highscores.getAllScores();
+
+
+        long id = highscores.saveScore("Test", pref.getInt("score", 0));
         //System.out.println(Long.toString(id));
-        HighScores score = highscores.getScore(1);
-        System.out.println(score.getName() + Integer.toString(score.getScore()));
+        //HighScores score = highscores.getScore(1);
+        //System.out.println(score.getName() + Integer.toString(score.getScore()));
     }
 
     void mainMenuButtonPress(View v) {

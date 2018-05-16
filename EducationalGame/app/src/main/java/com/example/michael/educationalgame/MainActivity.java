@@ -66,4 +66,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    void startHighScoresActivity(View v) {
+        Intent intent = new Intent(this, HighScoresActivity.class);
+        startActivity(intent);
+    }
 }

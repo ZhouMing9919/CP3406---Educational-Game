@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Michael on 16/05/2018.
  */
@@ -60,6 +63,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         return score;
+    }
+
+    public List<HighScores> getAllScores() {
+        List<HighScores> scores = new ArrayList<>();
+
+        String selectQuery = "SELECT  * FROM " + HighScores.TABLE_NAME + " ORDER BY " +
+                HighScores.COLUMN_SCORE + " DESC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                HighScores score = new HighScores();
+                score.setId(cursor.getInt(cursor.getColumnIndex(HighScores.COLUMN_ID)));
+                score.setName(cursor.getString(cursor.getColumnIndex(HighScores.COLUMN_NAME)));
+                score.setScore(cursor.getInt(cursor.getColumnIndex(HighScores.COLUMN_SCORE)));
+
+                scores.add(score);
+            } while (cursor.moveToNext());
+
+            db.close();
+        }
+        return scores;
+    }
+
+    public int getNotesCount() {
+        String countQuery = "SELECT  * FROM " + HighScores.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+
+        int count = cursor.getCount();
+        cursor.close();
+
+
+        // return count
+        return count;
+    }
+
+    public void updateScore(HighScores score) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(HighScores.COLUMN_SCORE, score.getScore());
     }
 
 

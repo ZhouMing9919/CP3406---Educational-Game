@@ -4,4 +4,5 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_game_over">GameOverActivity</string>
+    <string name="title_activity_high_scores">HighScoresActivity</string>
 </resources>
