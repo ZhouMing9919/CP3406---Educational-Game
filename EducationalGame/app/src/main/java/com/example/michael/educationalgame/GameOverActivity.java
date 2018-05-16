@@ -14,6 +14,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import database.DatabaseHelper;
@@ -23,7 +25,10 @@ public class GameOverActivity extends AppCompatActivity {
 
     SharedPreferences pref;
 
+    DatabaseHelper highScores;
+    List<HighScores> allScores;
     TextView score;
+    TextView highScoreText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +41,26 @@ public class GameOverActivity extends AppCompatActivity {
 
         pref = getSharedPreferences("preferences", MODE_PRIVATE);
 
+        highScoreText = (TextView) findViewById(R.id.highScoreText);
         score = (TextView) findViewById(R.id.scoreText);
 
-        System.out.println(pref.getInt("score", 0));
+        highScores = new DatabaseHelper(this);
+        allScores = highScores.getAllScores();
+
+        for (HighScores localScore : allScores) {
+            if (pref.getInt("score", 0) > localScore.getScore()) {
+                highScoreText.setVisibility(View.VISIBLE);
+            } else {
+                highScoreText.setVisibility(View.INVISIBLE);
+            }
+            break;
+        }
+
         String scoreAsText = Integer.toString(pref.getInt("score", 0));
         score.setText("Score: " + scoreAsText);
 
-        DatabaseHelper highscores = new DatabaseHelper(this);
-        List<HighScores> allScores = highscores.getAllScores();
-
-
-        long id = highscores.saveScore("Test", pref.getInt("score", 0));
+        long id = highScores.saveScore("Test", pref.getInt("score", 0));
+        
         //System.out.println(Long.toString(id));
         //HighScores score = highscores.getScore(1);
         //System.out.println(score.getName() + Integer.toString(score.getScore()));

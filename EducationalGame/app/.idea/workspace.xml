@@ -68,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HighScoresActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HighScoresActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/HighScoresActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="39" column="17" lean-forward="true" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+            <state relative-caret-position="340">
+              <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -107,28 +107,31 @@
       <file leaf-file-name="GameActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/GameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="612">
               <caret line="173" column="0" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameOverActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameOverActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/GameOverActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+            <state relative-caret-position="663">
+              <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HighScores.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/database/HighScores.java">
+      <file leaf-file-name="content_game_over.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_game_over.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
+            <state relative-caret-position="277">
+              <caret line="33" column="31" lean-forward="false" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -1879,7 +1882,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/SettingsActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/content_game.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_game_over.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/content_game_over.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/GameActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/HighScores.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/DatabaseHelper.java" />
@@ -1887,8 +1889,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_high_scores.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/content_high_scores.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/GameOverActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/HighScoresActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/content_game_over.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/GameOverActivity.java" />
       </list>
     </option>
   </component>
@@ -2089,7 +2092,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.michael.educationalgame.MainActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526475977823" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477420621" />
       </method>
     </configuration>
     <configuration default="false" name="SettingsActivity" type="AndroidRunConfigurationType" factoryName="Android App" temporary="true">
@@ -2138,7 +2141,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.michael.educationalgame.SettingsActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526475977823" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477420621" />
       </method>
     </configuration>
     <configuration default="false" name="GameActivity" type="AndroidRunConfigurationType" factoryName="Android App" temporary="true">
@@ -2187,7 +2190,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.michael.educationalgame.GameActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526475977823" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477420621" />
       </method>
     </configuration>
     <configuration default="false" name="GameOverActivity" type="AndroidRunConfigurationType" factoryName="Android App" temporary="true">
@@ -2236,7 +2239,7 @@
       <option name="ACTIVITY_CLASS" value="com.example.michael.educationalgame.GameOverActivity" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526475977823" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477420621" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -2309,7 +2312,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526475977823" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477420621" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2357,7 +2360,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526475977823" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477420621" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2540,7 +2543,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526475977824" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1526477420622" />
       </method>
     </configuration>
     <list size="5">
@@ -2973,17 +2976,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_game_over.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/highscores.db">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3060,17 +3052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_high_scores.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -3081,8 +3062,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/GameActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="612">
           <caret line="173" column="0" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_high_scores.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -3098,18 +3090,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/GameOverActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/HighScoresActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="19" column="27" lean-forward="false" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        <state relative-caret-position="340">
+          <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/HighScoresActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/content_game_over.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="39" column="17" lean-forward="true" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+        <state relative-caret-position="277">
+          <caret line="33" column="31" lean-forward="false" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/michael/educationalgame/GameOverActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
           <folding />
         </state>
       </provider>
