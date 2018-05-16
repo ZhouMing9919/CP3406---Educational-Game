@@ -161,17 +161,18 @@ public class GameActivity extends AppCompatActivity {
 
     void gameOver() {
         prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
-        prefEditor.putInt("score", score);
+        prefEditor.putInt("score", score); //SO THIS WORKS IF IT IS A STATIC INTEGER LIKE 7 ?
         prefEditor.apply();
         System.out.println(pref.getInt("score", 0));
-        score = 0;
-        stringScore = Integer.toString(score);
-        scoreText.setText(stringScore);
+
         //animator.end(); //Causing app to crash for some reason
         animator.pause();
         animator.cancel();
         Intent intent = new Intent(this, GameOverActivity.class);
         startActivity(intent);
+        //score = 0;
+        stringScore = Integer.toString(score);
+        scoreText.setText(stringScore);
     }
 
     void runTimer() {
