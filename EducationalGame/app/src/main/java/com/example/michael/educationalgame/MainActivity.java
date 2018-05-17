@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
+
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences.Editor prefEditor;

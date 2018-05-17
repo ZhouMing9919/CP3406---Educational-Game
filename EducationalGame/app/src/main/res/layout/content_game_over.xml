@@ -37,6 +37,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/shareToTwitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:text="Share to twitter"
+        android:onClick="authorise"/>
+
     <TextView
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"

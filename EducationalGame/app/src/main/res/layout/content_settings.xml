@@ -10,29 +10,12 @@
     tools:showIn="@layout/activity_settings">
 
 
-    <CheckBox
-        android:id="@+id/addition"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/clearHighscores"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Addition" />
-
-    <CheckBox
-        android:id="@+id/subtraction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Subtraction" />
-
-    <CheckBox
-        android:id="@+id/multiplication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Multiplication" />
-
-    <CheckBox
-        android:id="@+id/division"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Division" />
+        android:onClick="clearHighscores"
+        android:text="Clear Highscores" />
 
     <SeekBar
         android:id="@+id/firstValueMaxSlider"

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.michael.educationalgame">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,6 +39,10 @@
         <activity
             android:name=".HighScoresActivity"
             android:label="@string/title_activity_high_scores"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Authenticate"
+            android:label="@string/title_activity_authenticate"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

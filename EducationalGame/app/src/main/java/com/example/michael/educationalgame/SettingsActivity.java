@@ -12,20 +12,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import database.DatabaseHelper;
 
 public class SettingsActivity extends AppCompatActivity {
 
     SharedPreferences.Editor prefEditor;
     SharedPreferences pref;
 
+    Button clearHighScores;
     SeekBar firstValueMaxSlider;
     SeekBar secondValueMaxSlider;
     TextView firstValueMaxText;
     TextView secondValueMaxText;
+    DatabaseHelper highScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,9 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         pref = getSharedPreferences("preferences", MODE_PRIVATE);
+
+        clearHighScores = (Button) findViewById(R.id.clearHighscores);
+        highScores = new DatabaseHelper(this);
 
         firstValueMaxSlider = (SeekBar) findViewById(R.id.firstValueMaxSlider);
         secondValueMaxSlider = (SeekBar) findViewById(R.id.secondValueMaxSlider);
@@ -112,6 +120,10 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    void clearHighscores(View v) {
+        highScores.clearDatabase();
     }
 
 }

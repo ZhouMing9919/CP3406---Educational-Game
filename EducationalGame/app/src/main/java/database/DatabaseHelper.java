@@ -109,5 +109,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(HighScores.COLUMN_SCORE, score.getScore());
     }
 
+    public void clearDatabase() {
+        String deleteQuery = "DELETE FROM " + HighScores.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL(deleteQuery);
+    }
+
 
 }
