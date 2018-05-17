@@ -107,7 +107,7 @@ public class GameOverActivity extends AppCompatActivity {
                     Query query = new Query("@twitterapi");
                     QueryResult result;
                     try {
-                        twitter.updateStatus("I scored a new high score of: " + Integer.toString(pref.getInt("score", 0)) + " on the Addition Educational Game");
+                        twitter.updateStatus("I scored a new high score of " + Integer.toString(pref.getInt("score", 0)) + " on the Addition Educational Game!");
                         result = twitter.search(query);
                     } catch (final Exception e) {
                         runOnUiThread(new Runnable() {

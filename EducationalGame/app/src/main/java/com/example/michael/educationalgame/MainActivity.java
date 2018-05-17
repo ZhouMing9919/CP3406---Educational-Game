@@ -12,11 +12,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences.Editor prefEditor;
+    Button settingsButton;
+    Button highScoresButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +30,28 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        settingsButton = (Button) findViewById(R.id.settingsButton);
+        highScoresButton = (Button) findViewById(R.id.highScoreButton);
+
         prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
         //prefEditor.putInt("firstValueMin", 0);
         prefEditor.putInt("firstValueMax", 100);
         //prefEditor.putInt("secondValueMin", 0);
         prefEditor.putInt("secondValueMax", 100);
         prefEditor.apply();
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startSettingsActvity();
+            }
+        });
+        highScoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startHighScoresActivity();
+            }
+        });
     }
 
     @Override
@@ -54,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
             startSettingsActvity();
             return true;
         }
+        if (id == R.id.action_highscores) {
+            startHighScoresActivity();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -68,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    void startHighScoresActivity(View v) {
+    void startHighScoresActivity() {
         Intent intent = new Intent(this, HighScoresActivity.class);
         startActivity(intent);
     }
