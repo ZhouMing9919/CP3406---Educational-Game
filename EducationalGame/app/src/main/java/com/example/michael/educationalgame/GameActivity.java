@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.hardware.SensorListener;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +54,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     String stringScore;
     ValueAnimator animator;
 
+    MediaPlayer dingSound;
+    MediaPlayer clockSound;
+    MediaPlayer wrongSound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,25 +68,22 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         toolbar.setTitleTextColor(Color.parseColor("#7A7D7D"));
         setSupportActionBar(toolbar);
 
+
+
         pref = getSharedPreferences("preferences", MODE_PRIVATE);
-        //prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
-        ////prefEditor.putInt("firstValueMin", 0);
-        //prefEditor.putInt("firstValueMax", 100);
-        ////prefEditor.putInt("secondValueMin", 0);
-        //prefEditor.putInt("secondValueMax", 100);
-        //prefEditor.apply();
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-
-        sensorManager.registerListener(this, sensor,SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_GAME);
 
         leftButton = (Button) findViewById(R.id.leftButton);
         rightButton = (Button) findViewById(R.id.rightButton);
         question = (TextView) findViewById(R.id.question);
         scoreText = (TextView) findViewById(R.id.score);
         timerBar = (ProgressBar) findViewById(R.id.timerBar);
-
+        dingSound = MediaPlayer.create(this, R.raw.ding);
+        wrongSound = MediaPlayer.create(this, R.raw.wrong);
+        clockSound = MediaPlayer.create(this, R.raw.clock);
         animator = ValueAnimator.ofInt(0, timerBar.getMax());
 
         leftButton.setOnClickListener(new View.OnClickListener() {
@@ -99,19 +102,22 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         generateAdditionQuestion();
         setButtons();
         runTimer();
+        clockSound.start();
+        clockSound.setLooping(true);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         animator.pause();
-        //animator.cancel();
+        clockSound.stop();
     }
+
     protected void onResume() {
         super.onResume();
         animator.resume();
+        clockSound.start();
     }
-
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -158,6 +164,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     void leftButtonPressed() {
         if(leftButton.getText().equals(stringAnswer)) {
+            dingSound.start();
             System.out.println("NICE LEFT BUTTON CORRECT");
             score += 1;
             stringScore = Integer.toString(score);
@@ -173,6 +180,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     void rightButtonPressed() {
         if(rightButton.getText().equals(stringAnswer)) {
+            dingSound.start();
             System.out.println("NICE RIGHT BUTTON CORRECT");
             score += 1;
             stringScore = Integer.toString(score);
@@ -195,18 +203,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         question.setText(questionText);
     }
 
-    void generateSubtractionQuestion() {
-        random = new Random();
-        firstNumber = random.nextInt(pref.getInt("firstValueMax", 100));
-        secondNumber = random.nextInt(pref.getInt("secondValueMax", 100));
-        answer = firstNumber - secondNumber;
-        stringAnswer = Integer.toString(answer);
-        String questionText = firstNumber + " - " + secondNumber + " =";
-        question.setText(questionText);
-    }
-
     void setButtons() {
-        int fakeAnswer = (answer - 10) - random.nextInt(answer + 10); //Need to find a better way to do this!!!!!!!!
+        int fakeAnswer = (answer - 10) - random.nextInt(answer + 10);
         String fakeAnswerString = Integer.toString(fakeAnswer);
         int leftOrRight = random.nextInt(2);
         if (leftOrRight == 0) {
@@ -219,17 +217,16 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     }
 
     void gameOver() {
+        wrongSound.start();
         prefEditor = getSharedPreferences("preferences", MODE_PRIVATE).edit();
-        prefEditor.putInt("score", score); //SO THIS WORKS IF IT IS A STATIC INTEGER LIKE 7 ?
+        prefEditor.putInt("score", score);
         prefEditor.apply();
         System.out.println(pref.getInt("score", 0));
 
-        //animator.end(); //Causing app to crash for some reason
         animator.pause();
         animator.cancel();
         Intent intent = new Intent(this, GameOverActivity.class);
         startActivity(intent);
-        //score = 0;
         stringScore = Integer.toString(score);
         scoreText.setText(stringScore);
     }
