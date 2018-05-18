@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.hardware.SensorListener;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -58,6 +59,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(Color.parseColor("#7A7D7D"));
         setSupportActionBar(toolbar);
 
         pref = getSharedPreferences("preferences", MODE_PRIVATE);
@@ -100,6 +102,18 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        animator.pause();
+        //animator.cancel();
+    }
+    protected void onResume() {
+        super.onResume();
+        animator.resume();
+    }
+
+
+    @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.values[0] > 4) {
             leftButtonPressed();
@@ -130,6 +144,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.action_highscores) {
+            Intent intent = new Intent(this, HighScoresActivity.class);
             startActivity(intent);
             return true;
         }
@@ -233,6 +252,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         });
         animator.start();
     }
+
 
 
 }

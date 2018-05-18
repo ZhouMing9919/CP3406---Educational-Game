@@ -47,7 +47,7 @@ public class HighScoresActivity extends AppCompatActivity {
         }
         count = 0;
 
-        highScoresText.setText("HighScores: " + "\n" + "1: " + scoreList[0] + "\n" + "2: " + scoreList[1] + "\n" + "3: " + scoreList[2] + "\n" + "4: " + scoreList[3] + "\n" + "5: " + scoreList[4]);
+        highScoresText.setText("\n" + "1: " + scoreList[0] + "\n" + "2: " + scoreList[1] + "\n" + "3: " + scoreList[2] + "\n" + "4: " + scoreList[3] + "\n" + "5: " + scoreList[4]);
 
     }
     //protected void onResume() {
